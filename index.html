@@ -8,14 +8,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0f;
-    --surface: #12121a;
-    --surface2: #1a1a26;
-    --border: #2a2a40;
-    --text: #e8e8f0;
-    --muted: #8888aa;
-    --accent: #7c6fff;
-    --accent2: #ff6b9d;
+    --bg: #f7f8fc;
+    --surface: #ffffff;
+    --surface2: #f1f5f9;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --muted: #64748b;
+    --accent: #4f46e5;
+    --accent2: #db2777;
     --radius: 12px;
     --radius-lg: 20px;
   }
@@ -23,17 +23,20 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
     overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* Header */
   header {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(10,10,15,0.85);
+    background: rgba(247,248,252,0.86);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     padding: 0 32px;
@@ -44,7 +47,7 @@
     height: 60px;
   }
   .logo {
-    font-family: 'Syne', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     font-weight: 800; font-size: 15px;
     color: var(--accent);
     letter-spacing: 0.05em;
@@ -88,9 +91,9 @@
     text-transform: uppercase; margin-bottom: 12px;
   }
   .hero h1 {
-    font-family: 'Syne', sans-serif; font-size: clamp(28px, 5vw, 52px);
+    font-family: "Noto Sans KR", sans-serif; font-size: clamp(28px, 5vw, 52px);
     font-weight: 800; line-height: 1.1;
-    background: linear-gradient(135deg, #fff 0%, #a0a0c0 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #4f46e5 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 12px;
@@ -142,7 +145,7 @@
   .card:hover {
     border-color: var(--card-color, var(--accent));
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.14);
   }
   .card-header {
     padding: 20px 20px 16px;
@@ -157,7 +160,7 @@
   }
   .card-meta { flex: 1; min-width: 0; }
   .card-title {
-    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px;
+    font-family: "Noto Sans KR", sans-serif; font-weight: 700; font-size: 16px;
     color: var(--text); margin-bottom: 4px;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
@@ -184,7 +187,7 @@
   }
   .preview-table td {
     padding: 6px 8px; color: var(--text);
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
     vertical-align: top; line-height: 1.4;
   }
   .preview-table tr:last-child td { border-bottom: none; }
@@ -205,7 +208,7 @@
   /* Modal */
   .modal-overlay {
     display: none; position: fixed; inset: 0; z-index: 200;
-    background: rgba(0,0,0,0.75); backdrop-filter: blur(8px);
+    background: rgba(15, 23, 42, 0.40); backdrop-filter: blur(10px);
     padding: 20px; overflow-y: auto;
   }
   .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
@@ -220,7 +223,7 @@
     display: flex; align-items: center; gap: 16px;
   }
   .modal-emoji { font-size: 36px; }
-  .modal-head h2 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; }
+  .modal-head h2 { font-family: "Noto Sans KR", sans-serif; font-size: 22px; font-weight: 800; }
   .modal-head p { font-size: 13px; color: var(--muted); margin-top: 2px; }
   .close-btn {
     margin-left: auto; background: var(--surface2); border: 1px solid var(--border);
@@ -246,14 +249,14 @@
     border-bottom: 2px solid var(--border);
   }
   .full-table td {
-    padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);
+    padding: 10px 12px; border-bottom: 1px solid rgba(15, 23, 42, 0.08);
     vertical-align: top; line-height: 1.5; color: var(--text);
   }
   .full-table tr:hover td { background: var(--surface2); }
   .full-table tr:last-child td { border-bottom: none; }
 
   .section-label {
-    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px;
+    font-family: "Noto Sans KR", sans-serif; font-weight: 700; font-size: 14px;
     color: var(--text); margin: 20px 0 10px;
     display: flex; align-items: center; gap: 8px;
   }
