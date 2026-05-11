@@ -305,6 +305,72 @@
 
   .hidden { display: none !important; }
 
+  /* CEFR guide section */
+  .info-section{
+    margin: 18px 0 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .info-section-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .info-section-title{
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .info-toggle{
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: color .2s, border-color .2s;
+    font-family: inherit;
+  }
+  .info-toggle:hover{ color: var(--text); border-color: color-mix(in srgb, var(--accent) 35%, var(--border)); }
+  .info-section-body{ padding: 16px 18px; }
+
+  .cefr-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+  }
+  .cefr-card{
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface2);
+    padding: 14px 14px 12px;
+    position: relative;
+  }
+  .cefr-card::before{
+    content:"";
+    position:absolute; inset:0;
+    border-radius: 16px;
+    border: 1px solid color-mix(in srgb, var(--lc) 45%, transparent);
+    pointer-events:none;
+    opacity:.8;
+  }
+  .cefr-badge-lg{
+    display:inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--lc) 18%, transparent);
+    border: 1px solid color-mix(in srgb, var(--lc) 40%, transparent);
+    color: var(--lc);
+    margin-bottom: 10px;
+  }
+  .cefr-title{ font-weight: 800; margin-bottom: 6px; color: var(--text); }
+  .cefr-desc{ font-size: 12px; line-height: 1.55; color: var(--muted); margin-bottom: 10px; }
+  .cefr-modules{ font-size: 12px; color: var(--text); opacity: .9; }
+
   /* Responsive */
   @media (max-width: 640px) {
     main { padding: 20px 16px; }
@@ -332,7 +398,7 @@
 
 <main>
   <div class="hero">
-    <div class="hero-label">v0.4 · 260429</div>
+    <div class="hero-label">v0.4 · 260511</div>
     <h1>AI Playground<br>문항 Preset 모음</h1>
     <p>영어 학습 게임 모듈별 문항 데이터, 프롬프트, 설계 사양을 정리한 레퍼런스 문서입니다.</p>
     <div class="pill-row">
@@ -341,7 +407,42 @@
       <div class="pill">A2</div>
       <div class="pill">B1</div>
       <div class="pill">CEFR 기준</div>
-      <div class="pill">20 Modules</div>
+      <div class="pill">19 Modules</div>
+    </div>
+  </div>
+
+  <div class="info-section" id="cefrSection">
+    <div class="info-section-head">
+      <div class="info-section-title">📊 CEFR 레벨 가이드</div>
+      <button class="info-toggle" onclick="toggleSection('cefrSection')">접기 ▲</button>
+    </div>
+    <div class="info-section-body" id="cefrSectionBody">
+      <div class="cefr-grid">
+        <div class="cefr-card" style="--lc:#94a3b8">
+          <div class="cefr-badge-lg">Pre-A1</div>
+          <div class="cefr-title">입문</div>
+          <div class="cefr-desc">알파벳과 3~4글자 기초 명사 수준. cat, dog, sun처럼 구체적이고 친숙한 단어 위주. 파닉스 규칙이 적용되는 단어, QWERTY 타이핑 가능 범위.</div>
+          <div class="cefr-modules">Word Punch · Treasure Hunter · Volcano Blaster Lv.1 · Ghost Buster R1~R2</div>
+        </div>
+        <div class="cefr-card" style="--lc:#6BCB77">
+          <div class="cefr-badge-lg">A1</div>
+          <div class="cefr-title">기초</div>
+          <div class="cefr-desc">짧은 문장과 일상 어휘 수준. "I like apples." 같은 단순 주어+동사 구조. 가족·동물·색상·음식·학교 생활 등 기본 주제 어휘.</div>
+          <div class="cefr-modules">Avatar Amigo · Birthday Card · This Is Me! · Emoji Story Beginner · Chef's Chat · Rescue the Princess Beginner</div>
+        </div>
+        <div class="cefr-card" style="--lc:#FFD93D">
+          <div class="cefr-badge-lg">A2</div>
+          <div class="cefr-title">초급</div>
+          <div class="cefr-desc">연결어(because, and)와 과거시제 사용 가능. "I ran to catch the bus." 같은 복합 문장. 동사 시제 변화와 주어-동사 일치 규칙 이해.</div>
+          <div class="cefr-modules">Emoji Story Intermediate · Magic Fortune · Scoop Up · Ghost Buster R4~R5 · Fuel Your Words Intermediate</div>
+        </div>
+        <div class="cefr-card" style="--lc:#FF6B6B">
+          <div class="cefr-badge-lg">B1</div>
+          <div class="cefr-title">중급</div>
+          <div class="cefr-desc">수동태·완료형·비교급 등 중급 문법 사용. 문단 단위 읽기·쓰기 가능. 추상적 주제(과학·역사·감정)에 대한 문장 구성.</div>
+          <div class="cefr-modules">Story Builder Advanced · Magic Word World · Escape Room Advanced · Animal Explorer B1 · Emoji Story Advanced</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -962,6 +1063,17 @@ const MODULES = [
 ];
 
 let currentFilter = 'all';
+
+function toggleSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  const body = document.getElementById(sectionId + 'Body');
+  const btn = section?.querySelector('.info-toggle');
+  if (!body || !btn) return;
+
+  const willHide = !body.classList.contains('hidden');
+  body.classList.toggle('hidden', willHide);
+  btn.textContent = willHide ? '펼치기 ▼' : '접기 ▲';
+}
 
 function setFilter(tag, btn) {
   currentFilter = tag;
